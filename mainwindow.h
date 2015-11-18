@@ -21,9 +21,6 @@ public:
     
 private slots:
     void activateButton();
-
-
-
     void AddTopButton();
     void AddBottomButton();
     void Searching();
@@ -33,6 +30,13 @@ private slots:
 //    void on_pushAddTopButton_clicked();
 
     void on_comboBox_currentIndexChanged(const QString &arg1);
+    bool SaveListToFile(const char filename[]);
+    void SaveToFile();
+    void on_readfromfile_clicked();
+    void AddNew(string Type, string Company, string Model,int Cm3, int HP,int ReleaseYear, long Kilometrage, long Price, int Number);
+    int ReadFromFile(const char filename[]);
+    void SHR(string &s, const int pos);
+
 
 private:
     Ui::MainWindow *ui;
@@ -40,5 +44,6 @@ private:
     int *tact;
     string str;
 };
+
 
 #endif // MAINWINDOW_H
