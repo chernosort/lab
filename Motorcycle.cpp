@@ -16,14 +16,14 @@ Motorcycle :: Motorcycle()
 }
 
 //конструктор с параметрами
-Motorcycle :: Motorcycle(string Type, string Company, string Model, int Cm3, int HP, int ReleaseYear, long Kilometrage,  long Price)
+Motorcycle :: Motorcycle(string Type, string Company, string Model,int ReleaseYear, int Cm3, int HP,  long Kilometrage,  long Price)
 {
     type = Type;
     company = Company;
     model = Model;
+    year = ReleaseYear;
     cm3 = Cm3;
     hp = HP;
-    year = ReleaseYear;
     kilometrage = Kilometrage;
     price = Price;
 }
@@ -32,6 +32,24 @@ Motorcycle :: Motorcycle(string Type, string Company, string Model, int Cm3, int
 Motorcycle :: ~Motorcycle()
 {
 
+}
+
+string Motorcycle :: toStream()
+{
+//    string str = QString::number(year).toStdString();
+    string s = type + " "+ company +" "+ model +" "+  QString::number(cm3).toLocal8Bit().constData() //QString::number(year).toStdString() +" "+
+            +" "+ QString::number(hp).toLocal8Bit().constData()
+            +" "+ QString::number(kilometrage).toLocal8Bit().constData() +" "+ QString::number(price).toLocal8Bit().constData();
+    return s;
+}
+
+string Motorcycle :: toFileStream()
+{
+    string str = QString::number(year).toStdString();
+    string s = ">>< "+type + " "+ company +" "+ model +" "+  QString::number(cm3).toLocal8Bit().constData() //QString::number(year).toStdString() +" "+
+            +" "+ QString::number(hp).toLocal8Bit().constData()
+            +" "+ QString::number(kilometrage).toLocal8Bit().constData() +" "+ QString::number(price).toLocal8Bit().constData();
+    return s;
 }
 
 Motorcycle :: Motorcycle(const Motorcycle & a)
@@ -100,3 +118,16 @@ int Motorcycle ::setPower(int a)
          return 0;
      }
 }
+
+void Motorcycle :: setData(string Type, string Company, string Model,int ReleaseYear, int Cm3, int HP,  long Kilometrage,  long Price)
+{
+    type = Type;
+    company = Company;
+    model = Model;
+    year = ReleaseYear;
+    cm3 = Cm3;
+    hp = HP;
+    kilometrage = Kilometrage;
+    price = Price;
+}
+
